@@ -9,4 +9,7 @@ then
 	then
 		echo "$3		IN	CNAME	$4"
 	fi
+elif [ $1 = "-b" ]
+then
+	echo "Borrando fichero"
 fi
