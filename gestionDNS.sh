@@ -1,7 +1,7 @@
 #!/bin/bash
 
-zonadirecta=db.kevin.gonzalonazareno.org
-zonainversa=db.172.22
+zonadirecta=/var/cache/bind/db.kevin.gonzalonazareno.org
+zonainversa=/var/cache/bind/db.172.22
 
 if [ $1 = "-a" ]
 then
