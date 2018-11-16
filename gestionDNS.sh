@@ -7,12 +7,13 @@ if [ $1 = "-a" ]
 then
 	if [ $2 = "-dir" ]
 	then
-		ip=`echo $4 | cut -d "." -f3,4`
+		ip=`echo $4 | cut -d "." -f4`
+		ip2=`echo $4 | cut -d "." -f3`
 #		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d -f2 -s`
 		echo "$3	IN	A	$4" >> $zonadirecta
 		echo "Añadido zona directa para $3 en el fichero $zonadirecta"
 		sleep 1
-		echo "$ip		IN	PTR	$3.kevin.gonzalonazareno.org." >> $zonainversa
+		echo "$ip.$ip2		IN	PTR	$3.kevin.gonzalonazareno.org." >> $zonainversa
 		echo "Añadido zona inversa para $ip en el fichero $zonainversa"
 		sleep 1
 		echo "Reiniciando Servidor DNS Bind9"
