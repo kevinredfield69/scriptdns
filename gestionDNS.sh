@@ -10,10 +10,10 @@ then
 		ip=`echo $4 | cut -d "." -f3,4`
 		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d " " -f2`
 		echo "$3	IN	A	$4" >> $zonadirecta
-		echo "Añadido $3	IN	A	$4 en el fichero $zonadirecta..."
+		echo "Añadido zona directa para $3 en el fichero $zonadirecta"
 		sleep 1
 		echo "$ip	IN	PTR	$3.$dominio" >> $zonainversa
-		echo "Añadido $ip	IN	PTR	$3.$dominio en el fichero $zonainversa..."
+		echo "Añadido zona inversa para $ip en el fichero $zonainversa"
 		sleep 1
 		echo "Reiniciando Servidor DNS Bind9"
 		sleep 3
