@@ -32,5 +32,12 @@ then
 	fi
 elif [ $1 = "-b" ]
 then
-	echo "Borrando zona..."
+        dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d" " -f2`
+        registro=`sed -e '/'${2}'/ !d' $zonadirecta | cut -f3 -s`
+        sed -i '/'${2}'/d' $zonadirecta
+        if [ "$registro" = "A" ]
+        then
+                sed -i '/'${2}.${dominio}'/d' $zonainversa
+        fi
+	systemctl restart bind9 >> /dev/null
 fi
