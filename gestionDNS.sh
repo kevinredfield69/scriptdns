@@ -12,7 +12,7 @@ then
 		echo "$3	IN	A	$4" >> $zonadirecta
 		echo "Añadido zona directa para $3 en el fichero $zonadirecta"
 		sleep 1
-		echo "$ip	IN	PTR	$3.kevin.gonzalonazareno.org" >> $zonainversa
+		echo "$ip		IN	PTR	$3.kevin.gonzalonazareno.org." >> $zonainversa
 		echo "Añadido zona inversa para $ip en el fichero $zonainversa"
 		sleep 1
 		echo "Reiniciando Servidor DNS Bind9"
