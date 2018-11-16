@@ -8,7 +8,7 @@ then
 	if [ $2 = "-dir" ]
 	then
 		ip=`echo $4 | cut -d "." -f3,4`
-		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d " " -f2
+		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d " " -f2`
 		echo "$3	IN	A	$4" >> $zonadirecta
 		echo "Añadido $3	IN	A	$4 en el fichero $zonadirecta..."
 		sleep 1
