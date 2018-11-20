@@ -36,7 +36,7 @@ then
         #Obtenemos el dominio y el tipo de registro para poder hacer una correcta elimininación del registro
 	dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -f2 -s`
         registro=`sed -e '/'${2}'/ !d' $zonadirecta | cut -f3 -s`
-	echo "Eliminando el registro $2 en el fichero de zona directa y fichero de zona inversa..."
+	echo "Eliminando el registro $2..."
 	sleep 1
         #Borramos el registro de la zona directa
         sed -i '/'${2}'/d' $zonadirecta
