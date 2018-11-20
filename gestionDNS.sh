@@ -23,7 +23,7 @@ then
 	elif [ $2 = "-alias" ]
 	then
 		echo "$3	IN	CNAME	$4" >> $zonadirecta
-		echo "Añadido alias	$3	IN	CNAME	$4 en el fichero $zonadirecta..."
+		echo "Añadido alias $3 en el fichero $zonadirecta..."
 		sleep 1
 		echo "Reiniciando Servidor DNS Bind9..."
 		sleep 3
