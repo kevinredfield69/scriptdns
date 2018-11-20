@@ -9,7 +9,7 @@ then
 	then
 		ip=`echo $4 | cut -d "." -f4`
 		ip2=`echo $4 | cut -d "." -f3`
-#		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d -f2 -s`
+		dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d -f2 -s`
 		echo "$3	IN	A	$4" >> $zonadirecta
 		echo "Añadido zona directa para $3 en el fichero $zonadirecta"
 		sleep 1
@@ -31,7 +31,16 @@ then
 	else
 		echo "Los parametros que has introducido no son correctos."
 	fi
-#elif [ $1 =  ]
-#then
-
+elif [ $1 = "-b" ]
+then
+        #Obtenemos el dominio y el tipo de registro para poder hacer una correcta elimininación del registro
+	dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d -f2 -s`
+        registro=`sed -e '/'${2}'/ !d' $zonadirecta | cut -f3 -s`
+        #Borramos el registro de la zona directa
+        sed -i '/'${2}'/d' $zonadirecta
+        #Si el registro es de tipo CNAME, no existe dentro de la zona inversa
+        if [ "$registro" = "A" ]
+        then
+                sed -i '/'${2}.${dominio}'/d' $zonainversa
+	fi
 fi
