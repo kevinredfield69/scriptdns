@@ -35,7 +35,7 @@ elif [ $1 = "-b" ]
 then
         #Obtenemos el dominio y el tipo de registro para poder hacer una correcta elimininación del registro
 	dominio=`sed -e '/ORIGIN/ !d' $zonadirecta | cut -d -f2 -s`
-        registro=`sed -e '/'${2}'/ !d' $zonadirecta | cut -f3 -s`
+        registro=`sed -e '/'${2}'/ !d' $zonadirecta | cut -d -f3 -s`
         #Borramos el registro de la zona directa
         sed -i '/'${2}'/d' $zonadirecta
         #Si el registro es de tipo CNAME, no existe dentro de la zona inversa
